@@ -69,16 +69,18 @@ def make_prompt(image_strs: list[str]):
     prompt = [
         {
             "role": "user",
-            "content": """I would like you to analyze the text in the attached image(s).
-                        I would like you to generate a listing of share deposits along with
-                        date and price. Consider dividend reinvestments as share deposits.
-                        Return the list of deposits as a JSON document. Emit the string BEGIN_JSON
-                        on a separate line before the JSON output starts and emit END_JSON on a
-                        separate line after the JSON output ends. The JSON output should be
-                        a JSON array of objects, each with a 'date', 'shares' and 'price' field.
-                        The 'date' field should be a string in the format 'YYYY-MM-DD'. The 'shares'
-                        and 'price' fields should be numbers. For example:
-                            [{"date": "2022-01-01", "shares": 19.000, "price": 43.8500}, ...]""",
+            "content": """
+I would like you to analyze the text in the attached image(s) and generate a
+listing of share deposits and sales along with date and price. Consider dividend
+reinvestments as share deposits. Sale transactions should be shown as negative
+units. Return the list of transactions as a JSON document. Emit the string
+BEGIN_JSON on a separate line before the JSON output starts and emit END_JSON on
+a separate line after the JSON output ends. The JSON output should be a JSON
+array of objects, each with a 'date', 'shares' and 'price' field. The 'date'
+field should be a string in the format 'YYYY-MM-DD'. The 'shares' and 'price'
+fields should be numbers. For example:
+    [{"date": "2022-01-01", "shares": 19.000, "price": 43.8500}, ...]
+If there are no share deposit or sale transactions then emit an empty array.""",
         },
         {
             "role": "user",
