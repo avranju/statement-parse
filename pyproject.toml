@@ -4,7 +4,12 @@ version = "0.1.0"
 description = "Parse investment account statements and extract list of deposits"
 readme = "README.md"
 requires-python = ">=3.13"
-dependencies = ["pdf2image>=1.17.0", "pillow>=11.1.0", "requests>=2.32.3"]
+dependencies = [
+    "anthropic>=0.45.2",
+    "pdf2image>=1.17.0",
+    "pillow>=11.1.0",
+    "requests>=2.32.3",
+]
 
 [dependency-groups]
 dev = ["ruff>=0.9.3"]

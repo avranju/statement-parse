@@ -14,7 +14,7 @@ def main():
         parser.print_help()
         return
 
-    images = convert_from_path(args.pdf_path)
+    images = convert_from_path(args.pdf_path, size=(1092, None))
     image_strs = list(map(image_to_base64, range(0, len(images)), images))
     prompt = make_prompt(image_strs, args.model)
 
